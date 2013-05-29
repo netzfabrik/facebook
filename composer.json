@@ -4,7 +4,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.*",
-		"facebook/php-sdk": "dev-master"
+		"facebook/php-sdk": "*"
     },
     "autoload": {
         "psr-0": {
