@@ -33,15 +33,6 @@ class Facebook
 	}
 
 	/**
-	 * Get channel file for x-domain comms
-	 * @return string
-	 */
-	public function getChannelUrl()
-	{
-		return $this->getConfig()->get('channelUrl');
-	}
-
-	/**
 	 * @param Zend\Config\Config $config
 	 * @return Facebook
 	 */

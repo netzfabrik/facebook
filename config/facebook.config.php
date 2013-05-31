@@ -1,6 +1,7 @@
 <?php
 return array(
 	'facebook' => array(
+		'locale' => 'en_US',
 		'appId' => '',
 		'secret' => '',
 		'channelUrl' => '',

@@ -9,9 +9,12 @@ class Jssdk extends AbstractHelper
 	public function __invoke()
 	{
 		$service = $this->getFacebookService();
+		$config = $service->getConfig();
+
 		return $this->getView()->render('helper/FB-SDK.phtml', array(
 			'appId' => $service->getAppId(),
-			'channelUrl' => $service->getChannelUrl()
+			'locale' => $config->locale,
+			'channelUrl' => $config->channelUrl
 		));
 	}
 }
