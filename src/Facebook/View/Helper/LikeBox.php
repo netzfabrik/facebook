@@ -8,7 +8,7 @@ class LikeBox extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		$facebookPageUrl = $this->getFacebookPage();
+		$facebookPageUrl = $this->getFacebookPage('likebox');
 		if(empty($facebookPageUrl)) {
 			return '';
 		}

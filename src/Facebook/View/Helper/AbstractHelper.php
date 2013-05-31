@@ -33,10 +33,18 @@ class AbstractHelper extends AbstractViewHelper
 
 	/**
 	 * Get configured facebook page url
+	 * @param string helperkey
 	 * @return string
 	 */
-	public function getFacebookPage()
+	public function getFacebookPage($helper = null)
 	{
+		// check for helper specific facebookPageUrl
+		if($helper && $helperConf = $this->getConfig($helper)) {
+			if(!empty($helperConf['facebookPageUrl'])) {
+				return $helperConf['facebookPageUrl'];
+			}
+		}
+
 		return $this->getConfig('facebookPageUrl');
 	}
 

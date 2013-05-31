@@ -8,7 +8,7 @@ class Follow extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		$facebookPageUrl = $this->getFacebookPage();
+		$facebookPageUrl = $this->getFacebookPage('follow');
 		if(empty($facebookPageUrl)) {
 			return '';
 		}

@@ -8,7 +8,7 @@ class Facepile extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		$facebookPageUrl = $this->getFacebookPage();
+		$facebookPageUrl = $this->getFacebookPage('facepile');
 		if(empty($facebookPageUrl)) {
 			return '';
 		}
