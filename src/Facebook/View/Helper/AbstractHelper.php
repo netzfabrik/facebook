@@ -39,24 +39,21 @@ class AbstractHelper extends AbstractViewHelper
 	public function getFacebookPage($helper = null)
 	{
 		// check for helper specific facebookPageUrl
-		if($helper && $helperConf = $this->getConfig($helper)) {
-			if(!empty($helperConf['facebookPageUrl'])) {
-				return $helperConf['facebookPageUrl'];
-			}
+		if ($helper && ($helperConf = $this->getConfig($helper)) && !empty($helperConf['facebookPageUrl'])) {
+			return $helperConf['facebookPageUrl'];
 		}
-
 		return $this->getConfig('facebookPageUrl');
 	}
 
 	/**
 	 * Get Config - alternative by key
 	 * @param string $key
-	 * @return Zend\Config\Config | mixed
+	 * @return Zend\Config\Config
 	 */
-	public function getConfig($key)
+	public function getConfig($key = null)
 	{
 		$config = $this->getFacebookService()->getConfig();
-		if($key) {
+		if ($key) {
 			return $config->get($key);
 		}
 		return $config;

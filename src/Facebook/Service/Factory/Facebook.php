@@ -17,9 +17,12 @@ class Facebook implements FactoryInterface
 	public function createService(ServiceLocatorInterface $sm)
 	{
 		$config = $sm->get('Config');
+		if(is_array($config)) {
+			$config = new Config($config['facebook']);
+		}
 
 		$service = new FacebookService();
-		$service->setConfig(new Config($config['facebook']));
+		$service->setConfig($config);
 
 		return $service;
 	}
