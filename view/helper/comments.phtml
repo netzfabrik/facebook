@@ -1,4 +1,6 @@
 <?php
 	$url = $this->url(null, array(), array('force_canonical' => true), true);
 ?>
-<div class="fb-comments" data-href="<?php echo $url ?>" data-width="470" data-num-posts="10"></div>
+<div class="fb-comments" data-href="<?php echo $url ?>"
+	data-width="<?php echo $this->config['data-width'] ?>"
+	data-num-posts="<?php echo $this->config['data-num-posts'] ?>"></div>

@@ -64,19 +64,29 @@ class Module
 					return $helper;
 				},
 				'facebookLike' => function($sm) {
-					return new Like();
+					$helper = new Like();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
 				},
 				'facebookLogin' => function($sm) {
-					return new Login();
+					$helper = new Login();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
 				},
 				'facebookActivity' => function($sm) {
-					return new Activity();
+					$helper = new Activity();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
 				},
 				'facebookSend' => function($sm) {
-					return new Send();
+					$helper = new Send();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
 				},
 				'facebookComments' => function($sm) {
-					return new Comments();
+					$helper = new Comments();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
 				}
 			)
 		);

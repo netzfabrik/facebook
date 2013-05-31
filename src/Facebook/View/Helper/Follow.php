@@ -14,7 +14,8 @@ class Follow extends AbstractHelper
 		}
 
 		return $this->getView()->render('helper/follow.phtml', array(
-			'facebookPageUrl' => $facebookPageUrl
+			'facebookPageUrl' => $facebookPageUrl,
+			'config' => $this->getConfig('follow')
 		));
 	}
 }

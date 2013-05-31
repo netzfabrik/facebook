@@ -8,6 +8,8 @@ class Comments extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		return $this->getView()->render('helper/comments.phtml');
+		return $this->getView()->render('helper/comments.phtml',
+			array('config' => $this->getConfig('comments'))
+		);
 	}
 }

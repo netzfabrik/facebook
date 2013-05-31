@@ -8,6 +8,8 @@ class Send extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		return $this->getView()->render('helper/send.phtml');
+		return $this->getView()->render('helper/send.phtml',
+			array('config' => $this->getConfig('send'))
+		);
 	}
 }

@@ -8,6 +8,8 @@ class Activity extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		return $this->getView()->render('helper/activity.phtml');
+		return $this->getView()->render('helper/activity.phtml',
+			array('config' => $this->getConfig('activity'))
+		);
 	}
 }

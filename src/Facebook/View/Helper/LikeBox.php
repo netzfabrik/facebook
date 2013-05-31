@@ -14,7 +14,8 @@ class LikeBox extends AbstractHelper
 		}
 
 		return $this->getView()->render('helper/likeBox.phtml', array(
-			'facebookPageUrl' => $facebookPageUrl
+			'facebookPageUrl' => $facebookPageUrl,
+			'config' => $this->getConfig('likebox')
 		));
 	}
 }

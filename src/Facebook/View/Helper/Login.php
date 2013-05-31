@@ -8,6 +8,8 @@ class Login extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		return $this->getView()->render('helper/login.phtml');
+		return $this->getView()->render('helper/login.phtml',
+			array('config' => $this->getConfig('login'))
+		);
 	}
 }

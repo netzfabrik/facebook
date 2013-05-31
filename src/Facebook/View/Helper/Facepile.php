@@ -14,7 +14,8 @@ class Facepile extends AbstractHelper
 		}
 
 		return $this->getView()->render('helper/facepile.phtml', array(
-			'facebookPageUrl' => $facebookPageUrl
+			'facebookPageUrl' => $facebookPageUrl,
+			'config' => $this->getConfig('facepile')
 		));
 	}
 }

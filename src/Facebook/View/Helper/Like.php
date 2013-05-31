@@ -8,6 +8,8 @@ class Like extends AbstractHelper
 	 */
 	public function __invoke()
 	{
-		return $this->getView()->render('helper/like.phtml');
+		return $this->getView()->render('helper/like.phtml',
+			array('config' => $this->getConfig('like'))
+		);
 	}
 }
