@@ -1,6 +1,6 @@
 {
     "name": "netzfabrik/facebook",
-    "description": "Facebook connectivity services",
+    "description": "Facebook connectivity services - providing View helper for social plugins",
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.*",

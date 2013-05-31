@@ -1,7 +1,8 @@
 <?php
 return array(
-	'facebook' => array(
-		'appId' => 'your-app-id-here',
-		'secret' => 'your-app-secret'
+	'view_manager' => array(
+		'template_path_stack' => array(
+			'facebook' => __DIR__ . '/../view'
+		)
 	)
 );

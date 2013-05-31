@@ -1,12 +1,10 @@
 <?php
 namespace Facebook\Service;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-
+use Zend\Config\Config;
 use \Facebook as FacebookBase;
 
-class Facebook implements FactoryInterface
+class Facebook
 {
 	/**
 	 * @var FacebookBase
@@ -14,21 +12,12 @@ class Facebook implements FactoryInterface
 	private $facebook;
 
 	/**
-	 * Create Facebook service
-	 * @param ServiceLocatorInterface $serviceLocator
-	 * @return mixed
+	 * @var Zend\Config\Config
 	 */
-	public function createService(ServiceLocatorInterface $sm)
-	{
-		$service = new self();
-		$config = $sm->get('Config');
-		$facebookBase = new FacebookBase($config['facebook']);
-		$service->setFacebook($facebookBase);
-		return $service;
-	}
+	private $config;
 
 	/**
-	 * Proxify call into facebook baseclass
+	 * Proxy call into Facebook baseclass
 	 * @param string $method
 	 * @param mixed $params
 	 * @throws \RuntimeException
@@ -44,20 +33,42 @@ class Facebook implements FactoryInterface
 	}
 
 	/**
-	 * @param FacebookBase $value
+	 * Get channel file for x-domain comms
+	 * @return string
+	 */
+	public function getChannelUrl()
+	{
+		return $this->getConfig()->get('channelUrl');
+	}
+
+	/**
+	 * @param Zend\Config\Config $config
 	 * @return Facebook
 	 */
-	public function setFacebook($facebookBase)
+	public function setConfig(Config $config)
 	{
-		$this->facebook = $facebookBase;
+		$this->config = $config;
 		return $this;
+	}
+
+	/**
+	 * @return Zend\Config\Config
+	 */
+	public function getConfig()
+	{
+		return $this->config;
 	}
 
 	/**
 	 * @return FacebookBase
 	 */
-	public function getFacebook()
+	private function getFacebook()
 	{
+		if(!$this->facebook) {
+			// lazy load on first call
+			$facebookBase = new FacebookBase($this->getConfig()->toArray());
+			$this->facebook = $facebookBase;
+		}
 		return $this->facebook;
 	}
 }

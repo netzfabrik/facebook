@@ -1,0 +1,20 @@
+<?php
+namespace Facebook\View\Helper;
+
+class LikeBox extends AbstractHelper
+{
+	/**
+	 * View helper invoke
+	 */
+	public function __invoke()
+	{
+		$facebookPageUrl = $this->getFacebookPage();
+		if(empty($facebookPageUrl)) {
+			return '';
+		}
+
+		return $this->getView()->render('helper/likeBox.phtml', array(
+			'facebookPageUrl' => $facebookPageUrl
+		));
+	}
+}
