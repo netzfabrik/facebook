@@ -53,6 +53,13 @@ class ViewhelperTestcase extends \PHPUnit_Framework_TestCase
 					'testHelper' => array(
 						'facebookPageUrl' => 'http://customFacebookPageUrl'
 					),
+					'oauth' => array(
+						'redirect_uri' => 'http://localhost',
+						'scope' => 'email',
+						'classes' => 'btn-big',
+						'id' => 'fbOauthLogin',
+						'link_text' => 'Login with Facebook'
+					),
 
 					// plugin config - see https://developers.facebook.com/docs/plugins/
 					'likebox' => array(

@@ -4,6 +4,7 @@ namespace Facebook;
 use Zend\Mvc\MvcEvent;
 
 use Facebook\View\Helper\Jssdk;
+use Facebook\View\Helper\Oauth;
 use Facebook\View\Helper\Activity;
 use Facebook\View\Helper\Comments;
 use Facebook\View\Helper\Facepile;
@@ -47,6 +48,12 @@ class Module
 					return $helper;
 				},
 
+				// oauth link
+				'facebookOauth' => function($sm) {
+					$helper = new Oauth();
+					$helper->setFacebookService($sm->getServiceLocator()->get('Facebook'));
+					return $helper;
+				},
 				// social plugins below
 				'facebookLikebox' => function($sm) {
 					$helper = new LikeBox();

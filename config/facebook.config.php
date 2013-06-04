@@ -7,6 +7,14 @@ return array(
 		'channelUrl' => '',
 		'facebookPageUrl' => '',
 
+		// oauth for app usage
+		'oauth' => array(
+			'redirect_uri' => '',   # see https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/
+			'scope' => '',   # see https://developers.facebook.com/docs/reference/login/#permissions
+			'classes' => '', # css classes for <a> tag
+			'id' => '', # id attribute for <a> tag
+			'link_text' => 'Login with Facebook', # link text being shown in link to oauth
+		),
 		// plugin config - see https://developers.facebook.com/docs/plugins/
 		'likebox' => array(
 			'facebookPageUrl' => '', // override global setting
