@@ -45,6 +45,7 @@ return array(
 			'data-recommendations' => 'false'
 		),
 		'like' => array(
+			'data-layout' => 'standard',
 			'data-send' => 'true',
 			'data-width' => 450,
 			'data-show-faces' => 'true'
