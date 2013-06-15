@@ -4,32 +4,36 @@ namespace Facebook\Service;
 use Zend\Config\Config;
 use \Facebook as FacebookBase;
 
-class Facebook
+class Facebook extends FacebookBase
 {
-	/**
-	 * @var FacebookBase
-	 */
-	private $facebook;
-
 	/**
 	 * @var Zend\Config\Config
 	 */
 	private $config;
 
 	/**
-	 * Proxy call into Facebook baseclass
-	 * @param string $method
-	 * @param mixed $params
-	 * @throws \RuntimeException
-	 * @return mixed
+	 *
+	 * @param unknown_type $config
 	 */
-	public function __call($method, $params)
+	public function __construct($config)
 	{
-		$facebookBase = $this->getFacebook();
-		if (method_exists($facebookBase, $method)) {
-			return call_user_func_array(array($facebookBase, $method), $params);
-		}
-		throw new \RuntimeException("Method '$method' not existing.");
+		$this->setConfig($config);
+
+		/* Default options for curl. */
+		self::$CURL_OPTS = array(
+			CURLOPT_CONNECTTIMEOUT => 10,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_TIMEOUT        => 60,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_USERAGENT      => 'facebook-php-3.2.2',
+		);
+
+		parent::__construct(
+			array(
+				'appId' => $this->getConfig()->appId,
+				'secret' => $this->getConfig()->secret
+			)
+		);
 	}
 
 	/**
@@ -48,18 +52,5 @@ class Facebook
 	public function getConfig()
 	{
 		return $this->config;
-	}
-
-	/**
-	 * @return FacebookBase
-	 */
-	private function getFacebook()
-	{
-		if(!$this->facebook) {
-			// lazy load on first call
-			$facebookBase = new FacebookBase($this->getConfig()->toArray());
-			$this->facebook = $facebookBase;
-		}
-		return $this->facebook;
 	}
 }

@@ -15,39 +15,12 @@ class FacebookServiceTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Zend\Config\Config', $service->getConfig());
 	}
 
-	/**
-	 * Facebook tries to set cookies on construct. We need a separate
-	 * process to avoid "headers already sent" errors.
-	 * @runInSeparateProcess
-	 */
 	public function testProxyCall()
 	{
 		$factory = new FacebookFactory();
 		$service = $factory->createService($this->getConfiguredServicemanager());
 		$this->assertEquals('12345', $service->getAppId());
 	}
-
-	/**
-	 * Facebook tries to set cookies on construct. We need a separate
-	 * process to avoid "headers already sent" errors.
-	 * @runInSeparateProcess
-	 */
-	public function testProxyCallException()
-	{
-		$factory = new FacebookFactory();
-		$service = $factory->createService($this->getConfiguredServicemanager());
-		$method = 'wrongNotExistingMethodCausingxception';
-		try {
-			$this->assertEquals('12345', $service->wrongNotExistingMethodCausingxception());
-		}
-		catch(\RuntimeException $e) {
-			$this->assertEquals("Method '$method' not existing.", $e->getMessage());
-			return;
-		}
-
-		$this->fail("Exception was not raised when trying to invoke not existing method.");
-	}
-
 
 	protected function getConfiguredServicemanager()
 	{

@@ -11,8 +11,9 @@ class Oauth extends AbstractHelper
 	{
 		$config = array_merge($this->getConfig('oauth')->toArray(), $config);
 		$oauthUrl = $this->getFacebookService()->getLoginUrl(array(
-			'redirect_uri' => $config['redirect_uri'],
-			'scope' 	   => $config['scope'],
+			'redirect_uri'  => $config['redirect_uri'],
+			'scope' 	    => $config['scope'],
+			'response_type' => $config['response_type'],
 		));
 		return $this->getView()->render('helper/oauth.phtml',
 			array(

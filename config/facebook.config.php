@@ -7,6 +7,17 @@ return array(
 		'channelUrl' => '',
 		'facebookPageUrl' => '',
 
+		// OpenGraph meta tags
+		'og' => array(
+			'enabled' => false,
+			'image' => '',
+			'title' => '',
+			'url' => '',
+			'site_name' => '',
+			'description' => '',
+			'type' => 'website',
+		),
+
 		// oauth for app usage
 		'oauth' => array(
 			'redirect_uri' => '',   # see https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/
@@ -14,6 +25,7 @@ return array(
 			'classes' => '', # css classes for <a> tag
 			'id' => '', # id attribute for <a> tag
 			'link_text' => 'Login with Facebook', # link text being shown in link to oauth
+			'response_type' => 'code'
 		),
 		// plugin config - see https://developers.facebook.com/docs/plugins/
 		'likebox' => array(

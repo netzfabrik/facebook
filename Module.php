@@ -16,6 +16,40 @@ use Facebook\View\Helper\Send;
 
 class Module
 {
+	public function onBootstrap(MvcEvent $e)
+	{
+		/* @var $app \Zend\Mvc\Application */
+		$app = $e->getTarget();
+		$config = $app->getConfig();
+
+		if ($config['facebook']['og']['enabled']) {
+			$em = $app->getEventManager();
+			$em->attach(\Zend\Mvc\MvcEvent::EVENT_DISPATCH, array($this, 'addMetaOnDispatch'));
+		}
+	}
+
+	/**
+	 * Add facebook OG Meta tags to layout
+	 * @param MvcEvent $e
+	 */
+	public function addMetaOnDispatch(MvcEvent $e)
+	{
+		/* @var $controller \zend\Mvc\Controller\AbstractActionController */
+		$controller = $e->getTarget();
+
+		$config = $e->getTarget()->getServiceLocator()->get('Config');
+		$config = $config['facebook']['og'];
+
+		/* @var $vhm \Zend\View\HelperPluginManager */
+		$vhm = $controller->getServiceLocator()->get('viewhelpermanager');
+		$vhm->get('headmeta')->setProperty('og:image', 		 $config['image']);
+		$vhm->get('headmeta')->setProperty('og:title', 		 $config['title']);
+		$vhm->get('headmeta')->setProperty('og:url', 		 $config['url']);
+		$vhm->get('headmeta')->setProperty('og:description', $config['description']);
+		$vhm->get('headmeta')->setProperty('og:site_name',   $config['site_name']);
+		$vhm->get('headmeta')->setProperty('og:type', 		 $config['type']);
+	}
+
 	public function getAutoloaderConfig()
 	{
 		return array(

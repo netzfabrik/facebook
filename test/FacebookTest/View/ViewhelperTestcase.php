@@ -58,7 +58,8 @@ class ViewhelperTestcase extends \PHPUnit_Framework_TestCase
 						'scope' => 'email',
 						'classes' => 'btn-big',
 						'id' => 'fbOauthLogin',
-						'link_text' => 'Login with Facebook'
+						'link_text' => 'Login with Facebook',
+						'response_type' => 'code'
 					),
 
 					// plugin config - see https://developers.facebook.com/docs/plugins/

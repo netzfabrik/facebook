@@ -21,9 +21,7 @@ class Facebook implements FactoryInterface
 			$config = new Config($config['facebook']);
 		}
 
-		$service = new FacebookService();
-		$service->setConfig($config);
-
+		$service = new FacebookService($config);
 		return $service;
 	}
 }

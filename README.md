@@ -73,7 +73,7 @@ To make the module work correctly, you have to append the Facebook JS SDK in you
 
 From now on you should be able to add all social Plugins available in this module.
 
-## Plugins available in this module
+## Viewhelper available in this module
 
 The following viewhelpers are available in this module:
 
@@ -103,4 +103,21 @@ To include the plugins all you need to do is to invoke the viewhelper in a views
 
 Optionally you can pass an array wih parameters, that will override the configuration made. For example, if you need a smaller Like Button, you can pass according options when invoking the viewhelper:
 
-	<?php echo $this->facebookLike(array('data-width' => 100)); ?>  
+	<?php echo $this->facebookLike(array('data-width' => 100)); ?>
+
+
+## OpenGraph Meta Tags (Properties) 
+
+Additionally you can add the opengraph meta tags to your layout describing properties of your page ([more info on OpenGraph here](https://developers.facebook.com/docs/opengraph/)). This feature enables our visitors to share your page on Facebook with a nice looking entity in the stream activity having an image and a description as configured. Currently supported properties are `image`, `title`, `description`, `url`, `site_name` and `type`.
+
+Most likely you already use the `headMeta()` helper in your layout (if not, this is a good point to start using it):
+
+	<html>
+	 <head>
+	 ...
+	 <?php echo $this->headMeta(); ?>
+	 ...
+	 </head>
+	 <body>
+
+Check the `og` section in the config. By setting `'enabled' => true` you can make the og-tags being rendered in your frontend according to your config options.

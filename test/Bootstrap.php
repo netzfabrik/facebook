@@ -18,6 +18,9 @@ class Bootstrap
 
     public static function init()
     {
+		// avoid that FB sdk inits a session
+    	session_start();
+
         // Load the user-defined test configuration file, if it exists; otherwise, load
         if (is_readable(__DIR__ . '/TestConfig.php')) {
             $testConfig = include __DIR__ . '/TestConfig.php';
